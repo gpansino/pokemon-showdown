@@ -1115,6 +1115,9 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		randomBattleMoves: ["batonpass", "encore", "icepunch", "substitute", "thunderwave", "wish"],
 		tier: "PU",
 	},
+	budew: {
+		tier: "LC",
+	},
 	roselia: {
 		randomBattleMoves: ["aromatherapy", "gigadrain", "hiddenpowerfire", "spikes", "stunspore", "synthesis"],
 		tier: "NU",
@@ -1393,6 +1396,90 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	deoxysspeed: {
 		randomBattleMoves: ["calmmind", "icebeam", "psychic", "recover", "spikes", "taunt", "toxic"],
-		tier: "Uber",
+		tier: "OU",
+	},
+	roserade: {
+		tier: "NU",
+	},
+	ambipom: {
+		tier: "OU",
+	},
+	mismagius: {
+		tier: "OU",
+	},
+	honchkrow: {
+		tier: "OU",
+	},
+	chingling: {
+		tier: "LC",
+	},
+	bonsly: {
+		tier: "LC",
+	},
+	mimejr: {
+		tier: "LC",
+	},
+	happiny: {
+		tier: "LC",
+	},
+	munchlax: {
+		tier: "LC",
+	},
+	mantyke: {
+		tier: "LC",
+	},
+	weavile: {
+		tier: "OU",
+	},
+	magnezone: {
+		tier: "OU",
+	},
+	lickilicky: {
+		tier: "OU",
+	},
+	rhyperior: {
+		tier: "OU",
+	},
+	tangrowth: {
+		tier:"OU",
+	},
+	electivire: {
+		tier: "OU",
+	},
+	magmortar: {
+		tier: "OU",
+	},
+	togekiss: {
+		tier: "OU",
+	},
+	yanmega: {
+		tier: "OU",
+	},
+	leafeon: {
+		tier: "OU",
+	},
+	glaceon: {
+		tier: "OU",
+	},
+	gliscor: {
+		tier: "OU",
+	},
+	mamoswine: {
+		tier: "OU",
+	},
+	porygonz: {
+		tier: "OU",
+	},
+	gallade: {
+		tier: "OU",
+	},
+	probopass: {
+		tier: "OU",
+	},
+	dusknoir: {
+		tier: "OU",
+	},
+	froslass: {
+		tier: "OU",
 	},
 };

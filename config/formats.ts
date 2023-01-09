@@ -23,6 +23,38 @@ export const Formats: FormatList = [
 	///////////////////////////////////////////////////////////////////
 
 	{
+		section: "Romhack pogg"
+	},
+	{
+		name: "[Gen 3] Romhack OU",
+
+		mod: 'gen3',
+		ruleset: ['Standard', 'One Boost Passer Clause', 'Freeze Clause Mod'],
+		banlist: ['Uber', 'AG', 'Shadow Tag'],
+	},
+	{
+		name: "Romhack UU",
+
+		mod: 'gen3',
+		ruleset: ['Standard'],
+		banlist: ['UUBL', 'OU'],
+	},
+	{
+		name: "Romhack Ubers",
+
+		mod: 'gen3',
+		ruleset: ['Standard'],
+		banlist: [],
+	},
+	{
+		name: "Romhack NU",
+
+		mod: 'gen3',
+		ruleset: ['Standard'],
+		banlist: ['UU'],
+	},
+
+	{
 		section: "S/V Singles",
 	},
 	{

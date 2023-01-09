@@ -172,6 +172,7 @@ export class ModdedDex {
 	forFormat(format: Format | string): ModdedDex {
 		if (!this.modsLoaded) this.includeMods();
 		const mod = this.formats.get(format).mod;
+		console.log(dexes[mod || BASE_MOD].includeData());
 		return dexes[mod || BASE_MOD].includeData();
 	}
 
@@ -412,7 +413,7 @@ export class ModdedDex {
 				}
 			}
 		}
-
+		console.log(searchResults);
 		return searchResults;
 	}
 
