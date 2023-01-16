@@ -18,7 +18,7 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 			'growlithehisui', 'arcaninehisui', 'voltorbhisui', 'electrodehisui', 'typhlosionhisui',
 			'qwilfishhisui', 'overqwil', 'sneaselhisui', 'sneasler', 'wyrdeer', 'ursaluna', 'kleavor',
 			'wooperpaldea', 'clodsire', 'taurospaldea', 'taurospaldeawater', 'taurospaldeafire', 'toedscool',
-			'toedscruel', 'wiglett', 'wugtrio', 'farigarif', 'dudunsparce', 'annihilape', 'greattusk',
+			'toedscruel', 'wiglett', 'wugtrio', 'farigiraf', 'dudunsparce', 'annihilape', 'greattusk',
 			'screamtail', 'fluttermane', 'sandyshocks', 'roaringmoon', 'irontreads', 'ironbundle', 'ironhands',
 			'ironthorns', 'ironvaliant'
 		]
