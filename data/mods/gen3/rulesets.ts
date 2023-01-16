@@ -8,7 +8,19 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 		unbanlist: ['budew', 'roserade', 'ambipom', 'mismagius', 'honchkrow', 'chingling', 'bonsly',
 			'mimejr', 'happiny', 'munchlax', 'mantyke', 'weavile', 'magnezone', 'lickilicky', 'rhyperior',
 			'tangrowth', 'electivire', 'magmortar', 'togekiss', 'yanmega', 'leafeon', 'glaceon', 'gliscor',
-			'mamoswine', 'porygonz', 'gallade', 'probopass', 'dusknoir', 'froslass',
+			'mamoswine', 'porygonz', 'gallade', 'probopass', 'dusknoir', 'froslass', 'rattataalola',
+			'raticatealola', 'raichualola', 'sandshrewalola', 'sandslashalola', 'vulpixalola', 'ninetalesalola',
+			'diglettalola', 'dugtrioalola', 'meowthalola', 'persianalola', 'geodudealola', 'graveleralola',
+			'golemalola', 'grimeralola', 'mukalola', 'marowakalola', 'exeggutoralola', 'sylveon', 'meowthgalar',
+			'perrserker', 'ponytagalar', 'rapidashgalar', 'farfetchdgalar', 'sirfetchd', 'weezinggalar',
+			'mrmimegalar', 'mrrime', 'corsolagalar', 'cursola', 'zigzagoongalar', 'linoonegalar', 'obstagoon',
+			'slowpokegalar', 'slowbrogalar', 'slowkinggalar', 'articunogalar', 'zapdosgalar', 'moltresgalar',
+			'growlithehisui', 'arcaninehisui', 'voltorbhisui', 'electrodehisui', 'typhlosionhisui',
+			'qwilfishhisui', 'overqwil', 'sneaselhisui', 'sneasler', 'wyrdeer', 'ursaluna', 'kleavor',
+			'wooperpaldea', 'clodsire', 'taurospaldea', 'taurospaldeawater', 'taurospaldeafire', 'toedscool',
+			'toedscruel', 'wiglett', 'wugtrio', 'farigarif', 'dudunsparce', 'annihilape', 'greattusk',
+			'screamtail', 'fluttermane', 'sandyshocks', 'roaringmoon', 'irontreads', 'ironbundle', 'ironhands',
+			'ironthorns', 'ironvaliant'
 		]
 	},
 };
