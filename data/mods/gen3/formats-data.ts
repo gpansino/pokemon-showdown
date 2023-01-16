@@ -1662,7 +1662,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	wugtrio: {
 		tier: "OU",
 	},
-	farigarif: {
+	farigiraf: {
 		tier: "OU",
 	},
 	dudunsparce: {
