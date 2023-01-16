@@ -1399,16 +1399,16 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "OU",
 	},
 	roserade: {
-		tier: "NU",
+		tier: "UUBL",
 	},
 	ambipom: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	mismagius: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	honchkrow: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	chingling: {
 		tier: "LC",
@@ -1435,31 +1435,31 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "OU",
 	},
 	lickilicky: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	rhyperior: {
 		tier: "OU",
 	},
 	tangrowth: {
-		tier:"OU",
+		tier:"UUBL",
 	},
 	electivire: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	magmortar: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	togekiss: {
 		tier: "OU",
 	},
 	yanmega: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	leafeon: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	glaceon: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	gliscor: {
 		tier: "OU",
@@ -1471,15 +1471,235 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "OU",
 	},
 	gallade: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	probopass: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	dusknoir: {
-		tier: "OU",
+		tier: "UUBL",
 	},
 	froslass: {
+		tier: "UUBL",
+	},
+	rattataalola: {
+		tier: "LC",
+	},
+	raticatealola: {
+		tier: "UUBL",
+	},
+	raichualola: {
+		tier: "UUBL",
+	},
+	sandshrewalola: {
+		tier: "LC",
+	},
+	sandslashalola: {
+		tier: "UUBL",
+	},
+	vulpixalola: {
+		tier: "LC",
+	},
+	ninetalesalola: {
+		tier: "UUBL",
+	},
+	diglettalola: {
+		tier: "LC",
+	},
+	dugtioalola: {
 		tier: "OU",
 	},
+	meowthalola: {
+		tier: "LC",
+	},
+	persianalola: {
+		tier: "UUBL",
+	},
+	geodudealola: {
+		tier: "LC",
+	},
+	graveleralola: {
+		tier: "LC",
+	},
+	golemalola: {
+		tier: "UUBL",
+	},
+	grimeralola: {
+		tier: "LC",
+	},
+	mukalola: {
+		tier: "OU",
+	},
+	marowakalola: {
+		tier: "OU",
+	},
+	exeggutoralola: {
+		tier: "OU",
+	},
+	sylveon: {
+		tier: "OU",
+	},
+	meowthgalar: {
+		tier: "LC",
+	},
+	perrserker: {
+		tier: "OU",
+	},
+	ponytagalar: {
+		tier: "LC",
+	},
+	rapidashgalar: {
+		tier: "OU",
+	},
+	farfetchdgalar: {
+		tier: "LC",
+	},
+	sirfetchd: {
+		tier: "OU",
+	},
+	weezinggalar: {
+		tier: "OU",
+	},
+	mrmimegalar: {
+		tier: "LC",
+	},
+	mrrime: {
+		tier: "OU",
+	},
+	corsolagalar: {
+		tier: "LC",
+	},
+	cursola: {
+		tier: "OU",
+	},
+	zigzagoongalar: {
+		tier: "LC",
+	},
+	linoonegalar: {
+		tier: "LC",
+	},
+	obstagoon: {
+		tier: "OU",
+	},
+	slowpokegalar: {
+		tier: "LC",
+	},
+	slowbrogalar: {
+		tier: "OU",
+	},
+	slowkinggalar: {
+		tier: "OU",
+	},
+	articunogalar: {
+		tier: "OU",
+	},
+	zapdosgalar: {
+		tier: "OU",
+	},
+	moltresgalar: {
+		tier: "OU",
+	},
+	growlithehisui: {
+		tier: "LC",
+	},
+	arcaninehisui: {
+		tier: "OU",
+	},
+	voltorbhisui: {
+		tier: "LC",
+	},
+	electrodehisui: {
+		tier: "OU",
+	},
+	typhlosionhisui: {
+		tier: "OU",
+	},
+	sneaselhisui: {
+		tier: "LC",
+	},
+	sneasler: {
+		tier: "OU",
+	},
+	qwilfishhisui: {
+		tier: "LC",
+	},
+	overqwil: {
+		tier: "OU",
+	},
+	wyrdeer: {
+		tier: "OU",
+	},
+	ursaluna: {
+		tier: "OU",
+	},
+	kleavor: {
+		tier: "OU",
+	},
+	wooperpaldea: {
+		tier: "LC",
+	},
+	clodsire: {
+		tier: "OU",
+	},
+	taurospaldea: {
+		tier: "OU",
+	},
+	taurospaldeawater: {
+		tier: "OU",
+	},
+	taurospaldeafire: {
+		tier: "OU",
+	},
+	toedscool: {
+		tier: "LC",
+	},
+	toedscruel: {
+		tier: "OU",
+	},
+	wiglett: {
+		tier: "LC",
+	},
+	wugtrio: {
+		tier: "OU",
+	},
+	farigarif: {
+		tier: "OU",
+	},
+	dudunsparce: {
+		tier: "OU",
+	},
+	annihilape: {
+		tier: "OU",
+	},
+	greattusk: {
+		tier: "OU",
+	},
+	screamtail: {
+		tier: "OU",
+	},
+	fluttermane: {
+		tier: "OU",
+	},
+	sandyshocks: {
+		tier: "OU",
+	},
+	roaringmoon: {
+		tier: "OU",
+	},
+	irontreads: {
+		tier: "OU",
+	},
+	ironhands: {
+		tier: "OU",
+	},
+	ironbundle: {
+		tier: "OU",
+	},
+	ironthorns: {
+		tier: "OU",
+	},
+	ironvaliant: {
+		tier: "OU",
+	},
+
 };
