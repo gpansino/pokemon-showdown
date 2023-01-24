@@ -1543,34 +1543,34 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
 	},
 	perrserker: {
-		tier: "OU",
+		tier: "UU",
 	},
 	ponytagalar: {
 		tier: "LC",
 	},
 	rapidashgalar: {
-		tier: "OU",
+		tier: "UU",
 	},
 	farfetchdgalar: {
 		tier: "LC",
 	},
 	sirfetchd: {
-		tier: "OU",
+		tier: "UU",
 	},
 	weezinggalar: {
-		tier: "OU",
+		tier: "UU",
 	},
 	mrmimegalar: {
 		tier: "LC",
 	},
 	mrrime: {
-		tier: "OU",
+		tier: "UU",
 	},
 	corsolagalar: {
 		tier: "LC",
 	},
 	cursola: {
-		tier: "OU",
+		tier: "UU",
 	},
 	zigzagoongalar: {
 		tier: "LC",
@@ -1579,127 +1579,127 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
 	},
 	obstagoon: {
-		tier: "OU",
+		tier: "UU",
 	},
 	slowpokegalar: {
 		tier: "LC",
 	},
 	slowbrogalar: {
-		tier: "OU",
+		tier: "UU",
 	},
 	slowkinggalar: {
-		tier: "OU",
+		tier: "UU",
 	},
 	articunogalar: {
-		tier: "OU",
+		tier: "UU",
 	},
 	zapdosgalar: {
-		tier: "OU",
+		tier: "UU",
 	},
 	moltresgalar: {
-		tier: "OU",
+		tier: "UU",
 	},
 	growlithehisui: {
 		tier: "LC",
 	},
 	arcaninehisui: {
-		tier: "OU",
+		tier: "UU",
 	},
 	voltorbhisui: {
 		tier: "LC",
 	},
 	electrodehisui: {
-		tier: "OU",
+		tier: "UU",
 	},
 	typhlosionhisui: {
-		tier: "OU",
+		tier: "UU",
 	},
 	sneaselhisui: {
 		tier: "LC",
 	},
 	sneasler: {
-		tier: "OU",
+		tier: "UU",
 	},
 	qwilfishhisui: {
 		tier: "LC",
 	},
 	overqwil: {
-		tier: "OU",
+		tier: "UU",
 	},
 	wyrdeer: {
-		tier: "OU",
+		tier: "UU",
 	},
 	ursaluna: {
-		tier: "OU",
+		tier: "UU",
 	},
 	kleavor: {
-		tier: "OU",
+		tier: "UU",
 	},
 	wooperpaldea: {
 		tier: "LC",
 	},
 	clodsire: {
-		tier: "OU",
+		tier: "UU",
 	},
 	taurospaldea: {
-		tier: "OU",
+		tier: "UU",
 	},
 	taurospaldeawater: {
-		tier: "OU",
+		tier: "UU",
 	},
 	taurospaldeafire: {
-		tier: "OU",
+		tier: "UU",
 	},
 	toedscool: {
 		tier: "LC",
 	},
 	toedscruel: {
-		tier: "OU",
+		tier: "UU",
 	},
 	wiglett: {
 		tier: "LC",
 	},
 	wugtrio: {
-		tier: "OU",
+		tier: "UU",
 	},
 	farigiraf: {
-		tier: "OU",
+		tier: "UU",
 	},
 	dudunsparce: {
-		tier: "OU",
+		tier: "UU",
 	},
 	annihilape: {
-		tier: "OU",
+		tier: "UU",
 	},
 	greattusk: {
-		tier: "OU",
+		tier: "UU",
 	},
 	screamtail: {
-		tier: "OU",
+		tier: "UU",
 	},
 	fluttermane: {
-		tier: "OU",
+		tier: "UU",
 	},
 	sandyshocks: {
-		tier: "OU",
+		tier: "UU",
 	},
 	roaringmoon: {
-		tier: "OU",
+		tier: "UU",
 	},
 	irontreads: {
-		tier: "OU",
+		tier: "UU",
 	},
 	ironhands: {
-		tier: "OU",
+		tier: "UU",
 	},
 	ironbundle: {
-		tier: "OU",
+		tier: "UU",
 	},
 	ironthorns: {
-		tier: "OU",
+		tier: "UU",
 	},
 	ironvaliant: {
-		tier: "OU",
+		tier: "UU",
 	},
 
 };
