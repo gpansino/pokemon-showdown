@@ -4,10 +4,14 @@ export const Scripts: ModdedBattleScriptsData = {
 	init() {
 		const specialTypes = ['Fire', 'Water', 'Grass', 'Ice', 'Electric', 'Dark', 'Psychic', 'Dragon', 'Fairy'];
 		let newCategory = '';
+		console.log("changing type categories");
 		for (const i in this.data.Moves) {
 			if (!this.data.Moves[i]) console.log(i);
 			if (this.data.Moves[i].category === 'Status') continue;
 			newCategory = specialTypes.includes(this.data.Moves[i].type) ? 'Special' : 'Physical';
+			if (this.data.Moves[i].type == "Fairy") {
+				console.log(this.data.Moves[i].name);
+			}
 			if (newCategory !== this.data.Moves[i].category) {
 				this.modData('Moves', i).category = newCategory;
 			}
