@@ -9,13 +9,11 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (!this.data.Moves[i]) console.log(i);
 			if (this.data.Moves[i].category === 'Status') continue;
 			newCategory = specialTypes.includes(this.data.Moves[i].type) ? 'Special' : 'Physical';
-			if (this.data.Moves[i].type == "Fairy") {
-				console.log(this.data.Moves[i].name + " " + newCategory);
-			}
 			if (newCategory !== this.data.Moves[i].category) {
 				this.modData('Moves', i).category = newCategory;
 			}
 		}
+		console.log(this.data.Moves);
 	},
 	pokemon: {
 		inherit: true,
