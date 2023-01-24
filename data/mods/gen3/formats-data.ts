@@ -1396,7 +1396,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	deoxysspeed: {
 		randomBattleMoves: ["calmmind", "icebeam", "psychic", "recover", "spikes", "taunt", "toxic"],
-		tier: "OU",
+		tier: "Uber",
 	},
 	roserade: {
 		tier: "UUBL",
