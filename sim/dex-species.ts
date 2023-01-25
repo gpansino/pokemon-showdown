@@ -500,7 +500,7 @@ export class DexSpecies {
 				);
 				if (!isLetsGo) species.isNonstandard = 'Past';
 			}
-			if (this.dex.gen == 3) {
+			if (species.gen == 3) {
 				console.log(species.name + " " + species.abilities);
 			}
 			if (this.dex.currentMod === 'gen8bdsp' &&
