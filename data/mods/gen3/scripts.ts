@@ -13,7 +13,6 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.modData('Moves', i).category = newCategory;
 			}
 		}
-		console.log(this.data.Moves);
 	},
 	pokemon: {
 		inherit: true,
