@@ -500,6 +500,9 @@ export class DexSpecies {
 				);
 				if (!isLetsGo) species.isNonstandard = 'Past';
 			}
+			if (this.dex.gen == 3) {
+				console.log(species.name + " " + species.abilities);
+			}
 			if (this.dex.currentMod === 'gen8bdsp' &&
 				(!species.isNonstandard || ["Gigantamax", "CAP"].includes(species.isNonstandard))) {
 				if (species.gen > 4 || (species.num < 1 && species.isNonstandard !== 'CAP') ||
