@@ -502,16 +502,19 @@ export class DexSpecies {
 			}
 			if (species.gen == 3 && this.dex.gen == 3) {
 				switch (species.name) {
-					case ("Dugtrio-Alola"): {
+					case ("Dugtrio-Alola" || "Diglett-Alola"): {
 						species.abilities['0'] = "Tangling Hair";
 						species.abilities['1'] = "Arena Trap";
+						break;
 					}
-					case ("Persian-Alola"): {
+					case ("Persian-Alola" || "Meowth-Alola"): {
 						species.abilities['0'] = "Limber";
+						break;
 					}
-					case ("Muk-Alola"): {
+					case ("Muk-Alola" || "Grimer-Alola"): {
 						species.abilities['0'] = "Gluttony";
 						species.abilities['1'] = "Stench";
+						break;
 					}
 				}
 				console.log(species.name + " " + species.abilities['0'] + " " + species.abilities['1']);
