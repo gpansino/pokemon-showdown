@@ -500,7 +500,7 @@ export class DexSpecies {
 				);
 				if (!isLetsGo) species.isNonstandard = 'Past';
 			}
-			if (species.gen == 3 && this.dex.gen == 3) {
+			if (species.gen <= 3 && this.dex.gen == 3) {
 				switch (species.name) {
 					case ("Dugtrio-Alola" || "Diglett-Alola"): {
 						species.abilities['0'] = "Tangling Hair";
