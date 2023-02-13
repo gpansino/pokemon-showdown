@@ -15,12 +15,16 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 			'perrserker', 'ponytagalar', 'rapidashgalar', 'farfetchdgalar', 'sirfetchd', 'weezinggalar',
 			'mrmimegalar', 'mrrime', 'corsolagalar', 'cursola', 'zigzagoongalar', 'linoonegalar', 'obstagoon',
 			'slowpokegalar', 'slowbrogalar', 'slowkinggalar', 'articunogalar', 'zapdosgalar', 'moltresgalar',
+			'regieleki', 'regidrago', 'regigigas',
 			'growlithehisui', 'arcaninehisui', 'voltorbhisui', 'electrodehisui', 'typhlosionhisui',
 			'qwilfishhisui', 'overqwil', 'sneaselhisui', 'sneasler', 'wyrdeer', 'ursaluna', 'kleavor',
 			'wooperpaldea', 'clodsire', 'taurospaldea', 'taurospaldeawater', 'taurospaldeafire', 'toedscool',
 			'toedscruel', 'wiglett', 'wugtrio', 'farigiraf', 'dudunsparce', 'annihilape', 'greattusk',
 			'screamtail', 'fluttermane', 'sandyshocks', 'roaringmoon', 'irontreads', 'ironbundle', 'ironhands',
-			'ironthorns', 'ironvaliant'
+			'ironthorns', 'ironvaliant',
+
+			'motordrive', 'leafguard', 'snowcloak', 'adaptability', 'steadfast', 'gluttony', 'tanglinghair',
+			'frisk', 
 		]
 	},
 };
