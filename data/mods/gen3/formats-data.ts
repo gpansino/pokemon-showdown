@@ -111,7 +111,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "NFE",
 	},
 	clefable: {
-		tier: "RU",
+		tier: "OU",
 	},
 	vulpix: {
 		tier: "LC",
@@ -1262,6 +1262,9 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 	froslass: {
 		tier: "UUBL",
 	},
+	regigigas: {
+		tier: "OU"
+	},
 	rattataalola: {
 		tier: "LC",
 	},
@@ -1323,34 +1326,34 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	perrserker: {
-		tier: "UU",
+		tier: "OU",
 	},
 	ponytagalar: {
 		tier: "LC",
 	},
 	rapidashgalar: {
-		tier: "UU",
+		tier: "OU",
 	},
 	farfetchdgalar: {
 		tier: "LC",
 	},
 	sirfetchd: {
-		tier: "UU",
+		tier: "OU",
 	},
 	weezinggalar: {
-		tier: "UU",
+		tier: "OU",
 	},
 	mrmimegalar: {
 		tier: "LC",
 	},
 	mrrime: {
-		tier: "UU",
+		tier: "OU",
 	},
 	corsolagalar: {
 		tier: "LC",
 	},
 	cursola: {
-		tier: "UU",
+		tier: "OU",
 	},
 	zigzagoongalar: {
 		tier: "LC",
@@ -1359,25 +1362,31 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	obstagoon: {
-		tier: "UU",
+		tier: "OU",
 	},
 	slowpokegalar: {
 		tier: "LC",
 	},
 	slowbrogalar: {
-		tier: "UU",
+		tier: "OU",
 	},
 	slowkinggalar: {
-		tier: "UU",
+		tier: "OU",
 	},
 	articunogalar: {
-		tier: "UU",
+		tier: "OU",
 	},
 	zapdosgalar: {
-		tier: "UU",
+		tier: "OU",
 	},
 	moltresgalar: {
-		tier: "UU",
+		tier: "OU",
+	},
+	regieleki: {
+		tier: "OU"
+	},
+	regidrago: {
+		tier: "OU"
 	},
 	growlithehisui: {
 		tier: "LC",
