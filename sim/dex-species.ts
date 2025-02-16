@@ -550,25 +550,6 @@ export class DexSpecies {
 				);
 				if (!isLetsGo) species.isNonstandard = 'Past';
 			}
-			if (species.gen <= 3 && this.dex.gen == 3) {
-				switch (species.name) {
-					case ("Dugtrio-Alola"): {
-						species.abilities['0'] = "Tangling Hair";
-						species.abilities['1'] = "Arena Trap";
-						break;
-					}
-					case ("Persian-Alola"): {
-						species.abilities['0'] = "Limber";
-						break;
-					}
-					case ("Muk-Alola"): {
-						console.log(species.name + " " + species.abilities['0'] + " " + species.abilities['1']);
-						species.abilities['0'] = "Gluttony";
-						species.abilities['1'] = "Stench";
-						break;
-					}
-				}
-			}
 			if (this.dex.currentMod === 'gen8bdsp' &&
 				(!species.isNonstandard || ["Gigantamax", "CAP"].includes(species.isNonstandard))) {
 				if (species.gen > 4 || (species.num < 1 && species.isNonstandard !== 'CAP') ||
