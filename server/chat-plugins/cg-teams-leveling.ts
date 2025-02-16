@@ -5,6 +5,7 @@
  */
 
 import {SQL} from "../../lib";
+import {getSpeciesName} from "./randombattles/winrates";
 
 export let addPokemon: SQL.Statement | null = null;
 export let incrementWins: SQL.Statement | null = null;
@@ -31,34 +32,33 @@ if (Config.usesqlite && Config.usesqliteleveling) {
 	dbSetupPromise = setupDatabase(database);
 }
 
+function getLevelSpeciesID(set: PokemonSet, format?: Format) {
+	if (['Basculin', 'Greninja'].includes(set.name)) return toID(set.species);
+	return toID(getSpeciesName(set, format || Dex.formats.get('gen9computergeneratedteams')));
+}
+
 async function updateStats(battle: RoomBattle, winner: ID) {
 	if (!incrementWins || !incrementLosses) await dbSetupPromise;
-	if (battle.rated < 1000 || toID(battle.format) !== 'gen9computergeneratedteams') return;
-
-	const p1 = Users.get(battle.p1.name);
-	const p2 = Users.get(battle.p2.name);
-	if (!p1 || !p2) return;
-
-	const p1team = await battle.getTeam(p1);
-	const p2team = await battle.getTeam(p2);
-	if (!p1team || !p2team) return;
-
-	let loserTeam, winnerTeam;
-	if (winner === p1.id) {
-		loserTeam = p2team;
-		winnerTeam = p1team;
-	} else {
-		loserTeam = p1team;
-		winnerTeam = p2team;
+	if (toID(battle.format) !== 'gen9computergeneratedteams') return;
+	// if the game is rated or part of a tournament hosted by a public room, it counts
+	if (battle.rated === 1 && battle.room.parent?.game) {
+		let parent = battle.room.parent;
+		if (parent.game!.gameid === 'bestof' && parent.parent?.game) parent = parent.parent;
+		if (parent.game!.gameid !== 'tournament' || parent.settings.isPrivate) return;
+	} else if (battle.rated < 1000) {
+		return;
 	}
 
-	for (const species of winnerTeam) {
-		await addPokemon?.run([toID(species.name), species.level]);
-		await incrementWins?.run([toID(species.name)]);
-	}
-	for (const species of loserTeam) {
-		await addPokemon?.run([toID(species.name), species.level]);
-		await incrementLosses?.run([toID(species.name)]);
+	for (const player of battle.players) {
+		const team = await battle.getPlayerTeam(player);
+		if (!team) return;
+		const increment = (player.id === winner ? incrementWins : incrementLosses);
+
+		for (const set of team) {
+			const statsSpecies = getLevelSpeciesID(set, Dex.formats.get(battle.format));
+			await addPokemon?.run([statsSpecies, set.level]);
+			await increment?.run([statsSpecies]);
+		}
 	}
 }
 

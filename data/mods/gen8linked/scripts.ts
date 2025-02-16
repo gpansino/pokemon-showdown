@@ -115,8 +115,10 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 				return;
 			}
-			this.actions.runMove(action.move, action.pokemon, action.targetLoc, action.sourceEffect,
-				action.zmove, undefined, action.maxMove, action.originalTarget);
+			this.actions.runMove(action.move, action.pokemon, action.targetLoc, {
+				sourceEffect: action.sourceEffect, zMove: action.zmove,
+				maxMove: action.maxMove, originalTarget: action.originalTarget,
+			});
 			break;
 		case 'megaEvo':
 			this.actions.runMegaEvo(action.pokemon);
@@ -171,16 +173,8 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 			}
 			break;
-		case 'runUnnerve':
-			this.singleEvent('PreStart', action.pokemon.getAbility(), action.pokemon.abilityState, action.pokemon);
-			break;
 		case 'runSwitch':
 			this.actions.runSwitch(action.pokemon);
-			break;
-		case 'runPrimal':
-			if (!action.pokemon.transformed) {
-				this.singleEvent('Primal', action.pokemon.getItem(), action.pokemon.itemState, action.pokemon);
-			}
 			break;
 		case 'shift':
 			if (!action.pokemon.isActive) return false;
@@ -196,7 +190,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			this.clearActiveMove(true);
 			this.updateSpeed();
 			residualPokemon = this.getAllActive().map(pokemon => [pokemon, pokemon.getUndynamaxedHP()] as const);
-			this.residualEvent('Residual');
+			this.fieldEvent('Residual');
 			this.add('upkeep');
 			break;
 		}
@@ -303,15 +297,22 @@ export const Scripts: ModdedBattleScriptsData = {
 		return false;
 	},
 	actions: {
-		runMove(moveOrMoveName, pokemon, targetLoc, sourceEffect, zMove, externalMove, maxMove, originalTarget) {
+		runMove(moveOrMoveName, pokemon, targetLoc, options) {
 			pokemon.activeMoveActions++;
+			const zMove = options?.zMove;
+			const maxMove = options?.maxMove;
+			const externalMove = options?.externalMove;
+			const originalTarget = options?.originalTarget;
+			let sourceEffect = options?.sourceEffect;
 			let target = this.battle.getTarget(pokemon, maxMove || zMove || moveOrMoveName, targetLoc, originalTarget);
 			let baseMove = this.dex.getActiveMove(moveOrMoveName);
+			const priority = baseMove.priority;
 			const pranksterBoosted = baseMove.pranksterBoosted;
 			if (baseMove.id !== 'struggle' && !zMove && !maxMove && !externalMove) {
 				const changedMove = this.battle.runEvent('OverrideAction', pokemon, target, baseMove);
 				if (changedMove && changedMove !== true) {
 					baseMove = this.dex.getActiveMove(changedMove);
+					baseMove.priority = priority;
 					if (pranksterBoosted) baseMove.pranksterBoosted = pranksterBoosted;
 					target = this.battle.getRandomTarget(pokemon, baseMove);
 				}
@@ -388,7 +389,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.battle.add('-zpower', pokemon);
 				pokemon.side.zMoveUsed = true;
 			}
-			const moveDidSomething = this.useMove(baseMove, pokemon, target, sourceEffect, zMove, maxMove);
+			const moveDidSomething = this.useMove(baseMove, pokemon, {target, sourceEffect, zMove, maxMove});
 			this.battle.lastSuccessfulMoveThisTurn = moveDidSomething ? this.battle.activeMove && this.battle.activeMove.id : null;
 			if (this.battle.activeMove) move = this.battle.activeMove;
 			this.battle.singleEvent('AfterMove', move, null, pokemon, target, move);
@@ -407,15 +408,15 @@ export const Scripts: ModdedBattleScriptsData = {
 				// Note that the speed stat used is after any volatile replacements like Speed Swap,
 				// but before any multipliers like Agility or Choice Scarf
 				// Ties go to whichever Pokemon has had the ability for the least amount of time
-				dancers.sort(
-					(a, b) => -(b.storedStats['spe'] - a.storedStats['spe']) || b.abilityOrder - a.abilityOrder
-				);
+				dancers.sort((a, b) => -(b.storedStats['spe'] - a.storedStats['spe']) ||
+					b.abilityState.effectOrder - a.abilityState.effectOrder);
 				for (const dancer of dancers) {
 					if (this.battle.faintMessages()) break;
 					if (dancer.fainted) continue;
 					this.battle.add('-activate', dancer, 'ability: Dancer');
 					const dancersTarget = !target!.isAlly(dancer) && pokemon.isAlly(dancer) ? target! : pokemon;
-					this.runMove(move.id, dancer, dancer.getLocOf(dancersTarget), this.dex.abilities.get('dancer'), undefined, true);
+					this.runMove(move.id, dancer, dancer.getLocOf(dancersTarget),
+						{sourceEffect: this.dex.abilities.get('dancer'), externalMove: true});
 				}
 			}
 			if (noLock && pokemon.volatiles['lockedmove']) delete pokemon.volatiles['lockedmove'];
@@ -441,7 +442,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 					runUnnerve: 100,
 					runSwitch: 101,
-					runPrimal: 102,
+					// runPrimal: 102, (deprecated)
 					switch: 103,
 					megaEvo: 104,
 					runDynamax: 105,

@@ -1,4 +1,4 @@
-export const Conditions: {[k: string]: ConditionData} = {
+export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 	brn: {
 		name: 'brn',
 		effectType: 'Status',
@@ -27,6 +27,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-status', target, 'par');
 			}
 		},
+		onModifySpePriority: -101,
 		onModifySpe(spe, pokemon) {
 			// Paralysis occurs after all other Speed modifiers, so evaluate all modifiers up to this point first
 			spe = this.finalModify(spe);
@@ -90,6 +91,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 			if (target.species.name === 'Shaymin-Sky' && target.baseSpecies.baseSpecies === 'Shaymin') {
 				target.formeChange('Shaymin', this.effect, true);
+				target.regressionForme = false;
 			}
 		},
 		onBeforeMovePriority: 10,
@@ -164,6 +166,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect?.id === 'lockedmove') {
 				this.add('-start', target, 'confusion', '[fatigue]');
+			} else if (sourceEffect?.effectType === 'Ability') {
+				this.add('-start', target, 'confusion', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
 			} else {
 				this.add('-start', target, 'confusion');
 			}
@@ -371,8 +375,18 @@ export const Conditions: {[k: string]: ConditionData} = {
 	futuremove: {
 		// this is a slot condition
 		name: 'futuremove',
-		duration: 3,
+		onStart(target) {
+			this.effectState.targetSlot = target.getSlot();
+			this.effectState.endingTurn = (this.turn - 1) + 2;
+			if (this.effectState.endingTurn >= 254) {
+				this.hint(`In Gen 8+, Future attacks will never resolve when used on the 255th turn or later.`);
+			}
+		},
 		onResidualOrder: 3,
+		onResidual(target: Pokemon) {
+			if (this.getOverflowedTurnCount() < this.effectState.endingTurn) return;
+			target.side.removeSlotCondition(this.getAtSlot(this.effectState.targetSlot), 'futuremove');
+		},
 		onEnd(target) {
 			const data = this.effectState;
 			// time's up; time to hit! :D
@@ -392,9 +406,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (data.source.hasAbility('normalize') && this.gen >= 6) {
 				data.moveData.type = 'Normal';
 			}
-			if (data.source.hasAbility('adaptability') && this.gen >= 6) {
-				data.moveData.stab = 2;
-			}
 			const hitMove = new this.dex.Move(data.moveData) as ActiveMove;
 
 			this.actions.trySpreadMoveHit([target], data.source, hitMove, true);
@@ -413,7 +424,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectState.sourceEffect = sourceEffect;
 			this.add('-activate', source, 'healreplacement');
 		},
-		onSwitchInPriority: 1,
 		onSwitchIn(target) {
 			if (!target.fainted) {
 				target.heal(target.maxhp);
@@ -540,6 +550,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 			return 5;
 		},
 		onWeatherModifyDamage(damage, attacker, defender, move) {
+			if (move.id === 'hydrosteam' && !attacker.hasItem('utilityumbrella')) {
+				this.debug('Sunny Day Hydro Steam boost');
+				return this.chainModify(1.5);
+			}
 			if (defender.hasItem('utilityumbrella')) return;
 			if (move.type === 'Fire') {
 				this.debug('Sunny Day fire boost');
@@ -808,9 +822,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 	commanding: {
 		name: "Commanding",
 		noCopy: true,
-		onStart(pokemon) {
-			this.add('-activate', pokemon, 'ability: Commander');
-		},
 		onDragOutPriority: 2,
 		onDragOut() {
 			return false;
@@ -820,11 +831,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onTrapPokemon(pokemon) {
 			pokemon.trapped = true;
 		},
-		// Override No Guard
-		onInvulnerabilityPriority: 2,
-		onInvulnerability(target, source, move) {
-			return false;
-		},
+		// Dodging moves is handled in BattleActions#hitStepInvulnerabilityEvent
+		// This is here for moves that manually call this event like Perish Song
+		onInvulnerability: false,
 		onBeforeTurn(pokemon) {
 			this.queue.cancelAction(pokemon);
 		},

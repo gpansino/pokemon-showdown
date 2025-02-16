@@ -1,5 +1,5 @@
 !/config/formats.ts
-/logs/*
+/logs/**/*
 /test/modlogs
 /test/replays/*.html
 /node_modules
@@ -10,7 +10,6 @@
 npm-debug.log
 .eslintcache
 .eslintcache-no-types
-package-lock.json
 /tools/set-import/sets
 databases/*.db*
 *.o

@@ -160,6 +160,7 @@ export const commands: Chat.ChatCommands = {
 		const isHTML = cmd.includes('html');
 		const isByMessages = cmd.includes('bymessages');
 		room = this.requireRoom();
+		if (room.settings.isPersonal) return this.errorReply(`Personal rooms do not support repeated messages.`);
 		this.checkCan(isHTML ? 'addhtml' : 'mute', null, room);
 		const [intervalString, name, ...messageArray] = target.split(',');
 		const id = toID(name);
@@ -196,11 +197,11 @@ export const commands: Chat.ChatCommands = {
 	repeathelp() {
 		this.runBroadcast();
 		this.sendReplyBox(
-			`<code>/repeat [minutes], [id], [phrase]</code>: repeats a given phrase every [minutes] minutes. Requires: % @ # &<br />` +
-			`<code>/repeathtml [minutes], [id], [phrase]</code>: repeats a given phrase containing HTML every [minutes] minutes. Requires: # &<br />` +
-			`<code>/repeatfaq [minutes], [FAQ name/alias]</code>: repeats a given Room FAQ every [minutes] minutes. Requires: % @ # &<br />` +
-			`<code>/removerepeat [id]</code>: removes a repeated phrase. Requires: % @ # &<br />` +
-			`<code>/viewrepeats [optional room]</code>: Displays all repeated phrases in a room. Requires: % @ # &<br />` +
+			`<code>/repeat [minutes], [id], [phrase]</code>: repeats a given phrase every [minutes] minutes. Requires: % @ # ~<br />` +
+			`<code>/repeathtml [minutes], [id], [phrase]</code>: repeats a given phrase containing HTML every [minutes] minutes. Requires: # ~<br />` +
+			`<code>/repeatfaq [minutes], [FAQ name/alias]</code>: repeats a given Room FAQ every [minutes] minutes. Requires: % @ # ~<br />` +
+			`<code>/removerepeat [id]</code>: removes a repeated phrase. Requires: % @ # ~<br />` +
+			`<code>/viewrepeats [optional room]</code>: Displays all repeated phrases in a room. Requires: % @ # ~<br />` +
 			`You can append <code>bymessages</code> to a <code>/repeat</code> command to repeat a phrase based on how many messages have been sent in chat. For example, <code>/repeatfaqbymessages ...</code><br />` +
 			`Phrases for <code>/repeat</code> can include normal chat formatting, but not commands.`
 		);
@@ -210,6 +211,7 @@ export const commands: Chat.ChatCommands = {
 	repeatfaq(target, room, user, connection, cmd) {
 		room = this.requireRoom();
 		this.checkCan('mute', null, room);
+		if (room.settings.isPersonal) return this.errorReply(`Personal rooms do not support repeated messages.`);
 		const isByMessages = cmd.includes('bymessages');
 
 		let [intervalString, topic] = target.split(',');
