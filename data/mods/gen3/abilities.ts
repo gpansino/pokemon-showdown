@@ -64,6 +64,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 	},
+	illuminate: {
+		inherit: true,
+		onAnyModifyAccuracyPriority: -1,
+		onAnyModifyAccuracy(accuracy, target, source) {
+			if (typeof accuracy === 'number') {
+				return this.chainModify([4506, 4096]);
+			}
+		},
+	},
 	intimidate: {
 		inherit: true,
 		onStart(pokemon) {
@@ -110,6 +119,24 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				if (!active.fainted && active.hasAbility('plus')) {
 					return this.chainModify(1.5);
 				}
+			}
+		},
+	},
+	pickup: {
+		inherit: true,
+		onResidual(pokemon){
+			if(this.randomChance(1, 5) && pokemon.hp && !pokemon.item){
+				const r = this.random(100);
+				let item;
+				if (r < 41) item = 'sitrusberry';
+				else if (r < 51) item = 'ganlonberry';
+				else if (r < 61) item = 'liechiberry';
+				else if (r < 71) item = 'apicotberry';
+				else if (r < 81) item = 'petayaberry';
+				else if (r < 91) item = 'salacberry';
+				else if (r < 99) item = 'starfberry';
+				else item = 'leftovers';
+				pokemon.setItem(item);
 			}
 		},
 	},
@@ -176,10 +203,16 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	trace: {
 		inherit: true,
-		onUpdate() {},
 		onStart(pokemon) {
-			const target = pokemon.side.randomFoe();
-			if (!target || target.fainted) return;
+			if (!this.effectState.seek) return;
+
+			let target;
+			if(pokemon.adjacentAllies()[1] == pokemon) target = pokemon.adjacentFoes()[0];
+			else if (pokemon.adjacentAllies()[0] == pokemon) target = pokemon.adjacentFoes()[1];
+
+			if(!target || target.fainted) return;
+			if(target.getAbility().flags['notrace'] && target.ability === 'noability') return;
+
 			const ability = target.getAbility();
 			if (pokemon.setAbility(ability)) {
 				this.add('-ability', pokemon, ability, '[from] ability: Trace', '[of] ' + target);
