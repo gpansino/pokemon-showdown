@@ -1976,19 +1976,25 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: 246,
 	},
 	illuminate: {
-		onTryBoost(boost, target, source, effect) {
-			if (source && target === source) return;
-			if (boost.accuracy && boost.accuracy < 0) {
-				delete boost.accuracy;
-				if (!(effect as ActiveMove).secondaries) {
-					this.add("-fail", target, "unboost", "accuracy", "[from] ability: Illuminate", "[of] " + target);
-				}
+		onAnyModifyAccuracyPriority: -1,
+		onAnyModifyAccuracy(accuracy, target, source) {
+			if (typeof accuracy === 'number') {
+				return this.chainModify([4506, 4096]);
 			}
 		},
-		onModifyMove(move) {
-			move.ignoreEvasion = true;
-		},
-		flags: {breakable: 1},
+		// onTryBoost(boost, target, source, effect) {
+		// 	if (source && target === source) return;
+		// 	if (boost.accuracy && boost.accuracy < 0) {
+		// 		delete boost.accuracy;
+		// 		if (!(effect as ActiveMove).secondaries) {
+		// 			this.add("-fail", target, "unboost", "accuracy", "[from] ability: Illuminate", "[of] " + target);
+		// 		}
+		// 	}
+		// },
+		// onModifyMove(move) {
+		// 	move.ignoreEvasion = true;
+		// },
+		// flags: {breakable: 1},
 		name: "Illuminate",
 		rating: 0.5,
 		num: 35,
@@ -3179,20 +3185,35 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: 124,
 	},
 	pickup: {
-		onResidualOrder: 28,
-		onResidualSubOrder: 2,
-		onResidual(pokemon) {
-			if (pokemon.item) return;
-			const pickupTargets = this.getAllActive().filter(target => (
-				target.lastItem && target.usedItemThisTurn && pokemon.isAdjacent(target)
-			));
-			if (!pickupTargets.length) return;
-			const randomTarget = this.sample(pickupTargets);
-			const item = randomTarget.lastItem;
-			randomTarget.lastItem = '';
-			this.add('-item', pokemon, this.dex.items.get(item), '[from] ability: Pickup');
-			pokemon.setItem(item);
+		onResidual(pokemon){
+			if(this.randomChance(1, 5) && pokemon.hp && !pokemon.item){
+				const r = this.random(100);
+				let item;
+				if (r < 41) item = 'sitrusberry';
+				else if (r < 51) item = 'ganlonberry';
+				else if (r < 61) item = 'liechiberry';
+				else if (r < 71) item = 'apicotberry';
+				else if (r < 81) item = 'petayaberry';
+				else if (r < 91) item = 'salacberry';
+				else if (r < 99) item = 'starfberry';
+				else item = 'leftovers';
+				pokemon.setItem(item);
+			}
 		},
+		// onResidualOrder: 28,
+		// onResidualSubOrder: 2,
+		// onResidual(pokemon) {
+		// 	if (pokemon.item) return;
+		// 	const pickupTargets = this.getAllActive().filter(target => (
+		// 		target.lastItem && target.usedItemThisTurn && pokemon.isAdjacent(target)
+		// 	));
+		// 	if (!pickupTargets.length) return;
+		// 	const randomTarget = this.sample(pickupTargets);
+		// 	const item = randomTarget.lastItem;
+		// 	randomTarget.lastItem = '';
+		// 	this.add('-item', pokemon, this.dex.items.get(item), '[from] ability: Pickup');
+		// 	pokemon.setItem(item);
+		// },
 		flags: {},
 		name: "Pickup",
 		rating: 0.5,
@@ -5054,12 +5075,13 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onUpdate(pokemon) {
 			if (!this.effectState.seek) return;
 
-			const possibleTargets = pokemon.adjacentFoes().filter(
-				target => !target.getAbility().flags['notrace'] && target.ability !== 'noability'
-			);
-			if (!possibleTargets.length) return;
+			let target;
+			if(pokemon.adjacentAllies()[1] == pokemon) target = pokemon.adjacentFoes()[0];
+			else if (pokemon.adjacentAllies()[0] == pokemon) target = pokemon.adjacentFoes()[1];
 
-			const target = this.sample(possibleTargets);
+			if(!target) return;
+			if(target.getAbility().flags['notrace'] && target.ability === 'noability') return;
+
 			const ability = target.getAbility();
 			if (pokemon.setAbility(ability)) {
 				this.add('-ability', pokemon, ability, '[from] ability: Trace', '[of] ' + target);

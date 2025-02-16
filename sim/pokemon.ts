@@ -1546,6 +1546,7 @@ export class Pokemon {
 	}
 
 	tryTrap(isHidden = false) {
+		if (this.ability == 'runaway') return false;
 		if (!this.runStatusImmunity('trapped')) return false;
 		if (this.trapped && isHidden) return true;
 		this.trapped = isHidden ? 'hidden' : true;
