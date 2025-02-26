@@ -203,12 +203,12 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	trace: {
 		inherit: true,
-		onStart(pokemon) {
+		onUpdate(pokemon) {
 			if (!this.effectState.seek) return;
 
 			let target;
-			if(pokemon.adjacentAllies()[1] == pokemon) target = pokemon.adjacentFoes()[0];
-			else if (pokemon.adjacentAllies()[0] == pokemon) target = pokemon.adjacentFoes()[1];
+			if(pokemon.adjacentAllies()[1] == pokemon) target = pokemon.adjacentFoes()[1];
+			else if (pokemon.adjacentAllies()[0] == pokemon) target = pokemon.adjacentFoes()[0];
 
 			if(!target || target.fainted) return;
 			if(target.getAbility().flags['notrace'] && target.ability === 'noability') return;

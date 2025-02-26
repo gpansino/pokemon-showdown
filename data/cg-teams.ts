@@ -606,6 +606,7 @@ export default class TeamGenerator {
 		if (accuracy < 100) {
 			if (ability === 'Compound Eyes') accuracy = Math.min(100, Math.round(accuracy * 1.3));
 			if (ability === 'Victory Star') accuracy = Math.min(100, Math.round(accuracy * 1.1));
+			if (ability === 'Illuminate') accuracy = Math.min(100, Math.round(accuracy * 1.1));
 		}
 		accuracy /= 100;
 
