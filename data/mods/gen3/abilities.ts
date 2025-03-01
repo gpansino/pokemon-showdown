@@ -1,4 +1,19 @@
+import { TriumvirateModeTrivia } from '../../../server/chat-plugins/trivia/trivia';
+
 export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTable = {
+	curiousmedicine: {
+		inherit: true,
+		onStart(pokemon) {
+			for (const otherMon of this.getAllActive()) {
+				otherMon.normalizeBoosts();
+				this.add('-normalizeboost', otherMon, '[from] ability: Curious Medicine', '[of] ' + pokemon);
+			}
+		},
+		flags: {},
+		name: "Curious Medicine",
+		rating: 0,
+		num: 261,
+	},
 	cutecharm: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
@@ -165,6 +180,20 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onStart(pokemon) {
 			this.addSplit(pokemon.side.id, ['-ability', pokemon, 'Pressure', '[silent]']);
 		},
+	},
+	quickdraw: {
+		inherit: true,
+		onFractionalPriorityPriority: -1,
+		onFractionalPriority(priority, pokemon, target, move) {
+			if (move.category !== "Status" && this.randomChance(1, 10)) {
+				this.add('-activate', pokemon, 'ability: Quick Draw');
+				return 0.1;
+			}
+		},
+		flags: {},
+		name: "Quick Draw",
+		rating: 2.5,
+		num: 259,
 	},
 	raindish: {
 		inherit: true,

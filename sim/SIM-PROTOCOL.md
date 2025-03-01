@@ -403,6 +403,10 @@ stat boosts are minor actions.
 
 > Clears all boosts from all Pokémon on both sides. (For example: Haze).
 
+`|-normalizeboosts`
+
+> Normalizes all boosts from all Pokemon on both sides (eg Curious Medicine)
+
 `|-clearpositiveboost|TARGET|POKEMON|EFFECT`
 
 > Clear the positive boosts from the `TARGET` Pokémon due to an `EFFECT` of the

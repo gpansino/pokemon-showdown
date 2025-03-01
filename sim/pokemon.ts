@@ -1188,6 +1188,20 @@ export class Pokemon {
 		}
 	}
 
+	normalizeBoosts(){
+		let boostName: BoostID;
+		let boostNumber; 
+		for (boostName in this.boosts){
+			boostNumber = this.boosts[boostName];
+			if(boostNumber > 0){
+				this.boosts[boostName] -= 1;
+			}
+			else if (boostNumber < 0){
+				this.boosts[boostName] += 1; 
+			}
+		}
+	}
+
 	setBoost(boosts: SparseBoostsTable) {
 		let boostName: BoostID;
 		for (boostName in boosts) {
