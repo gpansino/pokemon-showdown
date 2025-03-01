@@ -24,7 +24,7 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 			'ironthorns', 'ironvaliant',
 
 			'motordrive', 'leafguard', 'snowcloak', 'adaptability', 'steadfast', 'gluttony', 'tanglinghair',
-			'frisk', 
+			'frisk', 'quickdraw', 'curiousmedicine'
 		]
 	},
 };
