@@ -572,7 +572,7 @@ export class DexSpecies {
 				species.abilities = this.dex.deepClone(species.abilities);
 				delete species.abilities['H'];
 			}
-			if (this.dex.gen === 3 && this.dex.abilities.get(species.abilities['1']).gen === 4) delete species.abilities['1'];
+			if (this.dex.gen === 3 && this.dex.abilities.get(species.abilities['1']).gen === 4 && !species.name.includes('alola')) delete species.abilities['1'];
 
 			if (this.dex.parentMod) {
 				// if this species is exactly identical to parentMod's species, reuse parentMod's copy
