@@ -9,10 +9,6 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.add('-normalizeboost', otherMon, '[from] ability: Curious Medicine', '[of] ' + pokemon);
 			}
 		},
-		flags: {},
-		name: "Curious Medicine",
-		rating: 0,
-		num: 261,
 	},
 	cutecharm: {
 		inherit: true,
