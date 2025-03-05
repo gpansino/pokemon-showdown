@@ -186,10 +186,6 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				return 0.1;
 			}
 		},
-		flags: {},
-		name: "Quick Draw",
-		rating: 2.5,
-		num: 259,
 	},
 	raindish: {
 		inherit: true,

@@ -297,11 +297,6 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 			}
 		},
 	},
-	quickclaw: {
-		inherit: true,
-		onFractionalPriority() {},
-		// implemented in Pokemon#getActionSpeed()
-	},
 	salacberry: {
 		inherit: true,
 		onUpdate() {},
