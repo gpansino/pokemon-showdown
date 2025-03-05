@@ -5,8 +5,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onStart(pokemon) {
 			for (const otherMon of this.getAllActive()) {
-				otherMon.normalizeBoosts();
-				this.add('-normalizeboosts', otherMon, '[from] ability: Curious Medicine', '[of] ' + pokemon);
+				//otherMon.normalizeBoosts();
+				//this.add('-normalizeboosts', otherMon, '[from] ability: Curious Medicine', '[of] ' + pokemon);
 			}
 		},
 	},

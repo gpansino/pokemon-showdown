@@ -307,7 +307,7 @@ interface ModdedBattlePokemon {
 	isGrounded?: (this: Pokemon, negateImmunity: boolean | undefined) => boolean | null;
 	modifyStat?: (this: Pokemon, statName: StatIDExceptHP, modifier: number) => void;
 	moveUsed?: (this: Pokemon, move: ActiveMove, targetLoc?: number) => void;
-	normalizeboosts?: (this: Pokemon) => void;
+	normalizeBoosts?: (this: Pokemon) => void;
 	recalculateStats?: (this: Pokemon) => void;
 	runEffectiveness?: (this: Pokemon, move: ActiveMove) => number;
 	runImmunity?: (this: Pokemon, type: string, message?: string | boolean) => boolean;
@@ -414,7 +414,7 @@ interface MoveTextData extends ConditionTextData {
 	failTooHeavy?: string;
 	failWrongForme?: string;
 	megaNoItem?: string;
-	normalizeboosts?: string;
+	normalizeBoosts?: string;
 	prepare?: string;
 	removeItem?: string;
 	startFromItem?: string;
