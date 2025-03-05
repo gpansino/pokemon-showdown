@@ -107,7 +107,7 @@ export const DefaultText: {[id: IDEntry]: DefaultText} = {
 		clearBoostFromZEffect: "  [POKEMON] returned its decreased stats to normal using its Z-Power!",
 		invertBoost: "  [POKEMON]'s stat changes were inverted!",
 		clearAllBoost: "  All stat changes were eliminated!",
-		normalizeBosots: " All stat changes were lessened!",
+		normalizeBoosts: " All stat changes were lessened!",
 
 		superEffective: "  It's super effective!",
 		superEffectiveSpread: "  It's super effective on [POKEMON]!",
