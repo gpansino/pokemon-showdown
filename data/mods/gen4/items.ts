@@ -398,14 +398,6 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		inherit: true,
 		onTakeItem: true,
 	},
-	thickclub: {
-		inherit: true,
-		onModifyAtk(atk, pokemon) {
-			if (pokemon.species.name === 'Cubone' || pokemon.species.name === 'Marowak') {
-				return this.chainModify(2);
-			}
-		},
-	},
 	toxicorb: {
 		inherit: true,
 		onResidualOrder: 10,
