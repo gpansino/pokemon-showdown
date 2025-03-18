@@ -5638,11 +5638,11 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		spritenum: 475,
 		onModifyCritRatio(critRatio, user) {
-			if (this.toID(user.baseSpecies.baseSpecies) === 'farfetchd') {
+			if (this.toID(user.baseSpecies.baseSpecies) === 'farfetchd' || this.toID(user.baseSpecies.baseSpecies) === 'sirfetchd' ) {
 				return critRatio + 2;
 			}
 		},
-		itemUser: ["Farfetch\u2019d"],
+		itemUser: ["Farfetch\u2019d", "Farfetch\u2019d-Alola", "Sirfetch\u2019d"],
 		num: 259,
 		gen: 2,
 		isNonstandard: "Past",
